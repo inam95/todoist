@@ -9,6 +9,8 @@ import {
 import Image from "next/image";
 import React from "react";
 
+import todovexLogo from "@/public/logo/todovex.svg";
+
 export default function UserProfile() {
   const imageUrl = "";
   const name = "Inam Dev";
@@ -21,15 +23,13 @@ export default function UserProfile() {
           variant={"secondary"}
           className="flex items-center justify-start gap-1 lg:gap-2 m-0 p-0 lg:px-3 lg:w-full bg-white"
         >
-          {imageUrl && (
-            <Image
-              src={imageUrl}
-              width={24}
-              height={24}
-              alt={`${name} profile picture`}
-              className="rounded-full"
-            />
-          )}
+          <Image
+            src={todovexLogo}
+            width={24}
+            height={24}
+            alt={`${name} profile picture`}
+            className="rounded-full"
+          />
           <p className="truncate">{email}</p>
         </Button>
       </DropdownMenuTrigger>

@@ -1,13 +1,7 @@
 "use client";
-
-import { usePathname } from "next/navigation";
-import { MobileNav } from "./mobile-nav";
-import { primaryNavItems } from "../utils";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Hash, PlusIcon } from "lucide-react";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -15,23 +9,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import UserProfile from "./user-profile";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { Hash, PlusIcon } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { primaryNavItems } from "../utils";
 
 interface MyListTitleType {
   [key: string]: string;
 }
 
-export const Sidebar = () => {
-  const pathname = usePathname();
-
-  const LIST_OF_TITLE_IDS: MyListTitleType = {
-    primary: "",
-    projects: "My Projects",
-  };
-
-  const [navItems, setNavItems] = useState([...primaryNavItems]);
-
+export function SideBar() {
   return (
     <div className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -39,7 +29,7 @@ export const Sidebar = () => {
           <UserProfile />
         </div>
         <nav className="grid items-start px-1 text-sm font-medium lg:px-4">
-          {navItems.map(({ name, icon, link, id }, idx) => (
+          {primaryNavItems.map(({ name, icon, link, id }, idx) => (
             <div key={idx}>
               {id && (
                 <div
@@ -48,10 +38,10 @@ export const Sidebar = () => {
                     id === "filters" && "my-0"
                   )}
                 >
-                  <p className="flex flex-1 text-base">
+                  {/* <p className="flex flex-1 text-base">
                     {LIST_OF_TITLE_IDS[id]}
                   </p>
-                  {/* {LIST_OF_TITLE_IDS[id] === "My Projects" && (
+                  {LIST_OF_TITLE_IDS[id] === "My Projects" && (
                     <AddProjectDialog />
                   )} */}
                 </div>
@@ -59,10 +49,7 @@ export const Sidebar = () => {
               <div className={cn("flex items-center lg:w-full")}>
                 <div
                   className={cn(
-                    "flex items-center text-left lg:gap-3 rounded-lg py-2 transition-all hover:text-primary justify-between w-full",
-                    pathname === link
-                      ? "active rounded-lg bg-primary/10 text-primary transition-all hover:text-primary"
-                      : "text-foreground "
+                    "flex items-center text-left lg:gap-3 rounded-lg py-2 transition-all hover:text-primary justify-between w-full"
                   )}
                 >
                   <Link
@@ -115,4 +102,4 @@ export const Sidebar = () => {
       </div>
     </div>
   );
-};
+}

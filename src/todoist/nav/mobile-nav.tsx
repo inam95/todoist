@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { primaryNavItems } from "../utils";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,10 +9,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
+// import SearchForm from "./search-form";
+import UserProfile from "./user-profile";
 
 import todovexLogo from "@/public/logo/todovex.svg";
-import UserProfile from "./user-profile";
+import { primaryNavItems } from "../utils";
 
 export function MobileNav({
   navTitle = "",
